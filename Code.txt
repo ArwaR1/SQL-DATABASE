@@ -1,0 +1,36 @@
+/*Q1*/
+SELECT c.FirstName,c.LastName, sum(i.total)
+FROM Customer c
+JOIN Invoice i
+on c.CustomerId=i.CustomerId
+GROUP by 1,2
+ORDER by 3
+LIMIT 10;
+
+/*Q2*/
+SELECT t.AlbumId, count(i.Quantity)
+FROM Track t
+JOIN InvoiceLine i
+on t.TrackId=i.TrackId
+GROUP by 1
+ORDER by 2 DESC
+LIMIT 10;
+
+
+/*Q3*/
+SELECT c.City, avg(i.total), c.Country
+FROM Invoice i
+JOIN Customer c
+on c.CustomerId= i.CustomerId and c.Country = "USA" 
+GROUP by c.City
+LIMIT 10;
+
+
+/*Q4*/
+SELECT t.Name , sum(i.UnitPrice*i.Quantity)
+FROM Track t
+JOIN InvoiceLine i
+on t.TrackId=i.TrackId
+GROUP by 1
+ORDER by 2 DESC
+LIMIT 10;
